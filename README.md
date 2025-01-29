@@ -14,13 +14,12 @@ In **Overlapped MNIST**, each sample is formed by picking **two random MNIST dig
 ## Table of Contents
 1. [Introduction](#introduction) 
 2. [Reason for BCE](#BCEWithLogitsLoss) 
-3. [Project Structure](#project-structure)  
-4. [Requirements](#requirements)  
-5. [Usage](#usage)  
+3. [Project Structure](#project-structure)    
+4. [Usage](#usage)  
    - [Train](#train)  
    - [Evaluate](#evaluate)  
-6. [Results and Figures](#results-and-figures)
-7. [References](#reference)
+5. [Results and Figures](#results-and-figures)
+6. [References](#reference)
 
 ---
 

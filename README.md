@@ -58,16 +58,21 @@ python train.py --epochs 5 --save_model mnist_standard.pth
 Key arguments:
 
 --overlapped: Use overlapped (multi-label) MNIST instead of single-label MNIST.
+
 --epochs: Number of epochs to train (default: 10).
+
 --batch_size: Batch size (default: 64).
+
 --lr: Learning rate (default: 0.001).
+
 --save_model: Path to save the final model weights (e.g., model.pth).
+
 Example: train on overlapped MNIST for 10 epochs and save:
 
-bash
-Copy
-Edit
+```bash
+
 python train.py --overlapped --epochs 10 --save_model overlapped_mnist.pth
+```
 Evaluate
 Use evaluate.py to load a saved model and compute accuracy on the test set. It will also display a few random samples with predicted vs. ground truth labels.
 

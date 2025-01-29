@@ -95,5 +95,10 @@ Key arguments:
 --overlapped: Specifies that the model was trained on overlapped multi-label MNIST.
 
 ## Results and Figures
-Training Curves
+**Training Curves**
+
+
 During training, the script logs training and validation losses and accuracies at each epoch. Below is an example accuracy curve (left) and loss curve (right) for a model trained on overlapped MNIST:
+
+(figures/loss_curve.PNG)
+

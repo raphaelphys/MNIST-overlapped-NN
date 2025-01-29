@@ -41,22 +41,22 @@ The main difference between **standard** and **overlapped** MNIST is the dataset
 
 When dealing with **multi-label** problems (e.g., an image might contain multiple classes simultaneously), we treat each class as an independent binary decision. Instead of the softmax function, we use the **sigmoid** function on each logit:
 
-\[
+$$
 \sigma(z_i) = \frac{1}{1 + \exp(-z_i)} \quad \text{for each class } i.
-\]
+$$
 
 Given a **multi-hot** ground-truth vector \(\mathbf{y} \in \{0,1\}^K\) and corresponding logits \(\mathbf{z} \in \mathbb{R}^K\), the **Binary Cross-Entropy (BCE)** loss for each class \(i\) is:
 
-\[
-\text{BCE}\bigl(z_i, y_i\bigr)
+$$
+\text{BCE}(z_i, y_i)
 =
 -y_i \log \bigl(\sigma(z_i)\bigr)
 - (1 - y_i)\log \bigl(1 - \sigma(z_i)\bigr).
-\]
+$$
 
 We typically **average** over all \(K\) classes:
 
-\[
+$$
 \text{BCE\_with\_Logits}\bigl(\mathbf{z}, \mathbf{y}\bigr)
 =
 \frac{1}{K} \sum_{i=1}^{K}
@@ -64,7 +64,7 @@ We typically **average** over all \(K\) classes:
 -\,y_i \log\bigl(\sigma(z_i)\bigr)
 - \bigl(1 - y_i\bigr)\log\bigl(1 - \sigma(z_i)\bigr)
 \Bigr].
-\]
+$$
 
 In most modern frameworks (e.g., PyTorch), we can use a numerically stable variant called **BCEWithLogitsLoss**, which takes **raw logits** and applies the sigmoid internally to avoid numerical underflow or overflow. This makes **BCE** well-suited for **multi-label** classification, where each class is independently “on” or “off” rather than exactly one class per sample.
 

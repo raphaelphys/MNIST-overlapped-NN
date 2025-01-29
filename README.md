@@ -20,6 +20,7 @@ In **Overlapped MNIST**, each sample is formed by picking **two random MNIST dig
    - [Train](#train)  
    - [Evaluate](#evaluate)  
 6. [Results and Figures](#results-and-figures)
+7. [References](#reference)
 
 ---
 

@@ -45,11 +45,10 @@ $$
 \sigma(z_i) = \frac{1}{1 + \exp(-z_i)} \quad \text{for each class } i.
 $$
 
-Given a **multi-hot** ground-truth vector \(\mathbf{y} \in \{0,1\}^K\) and corresponding logits \(\mathbf{z} \in \mathbb{R}^K\), the **Binary Cross-Entropy (BCE)** loss for each class \(i\) is:
+Given a **multi-hot** ground-truth vector $\(\mathbf{y} \in \{0,1\}^K\)$ and corresponding logits \(\mathbf{z} \in \mathbb{R}^K\), the **Binary Cross-Entropy (BCE)** loss for each class \(i\) is:
 
 $$
-\text{BCE}(z_i, y_i)
-=
+\text{BCE}(z_i, y_i) =
 -y_i \log \bigl(\sigma(z_i)\bigr)
 - (1 - y_i)\log \bigl(1 - \sigma(z_i)\bigr).
 $$
@@ -57,8 +56,7 @@ $$
 We typically **average** over all \(K\) classes:
 
 $$
-\text{BCE\_with\_Logits}\bigl(\mathbf{z}, \mathbf{y}\bigr)
-=
+\text{BCE\_with\_Logits}\bigl(\mathbf{z}, \mathbf{y}\bigr)=
 \frac{1}{K} \sum_{i=1}^{K}
 \Bigl[
 -\,y_i \log\bigl(\sigma(z_i)\bigr)

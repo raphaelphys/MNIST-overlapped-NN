@@ -93,28 +93,54 @@ def main():
 
     # Visualize a few samples
     import random
-    num_samples = 5
-    indices = random.sample(range(len(test_dataset)), num_samples)
-
-    for idx in indices:
+    
+    # Number of test samples you want to visualize
+    num_test_samples = 12
+    
+    # Grid dimensions: for example, 3 rows x 4 columns
+    ncols = 4
+    nrows = num_test_samples // ncols
+    if nrows * ncols < num_test_samples:
+        nrows += 1
+    
+    indices = random.sample(range(len(test_dataset)), num_test_samples)
+    
+    fig, axs = plt.subplots(nrows, ncols, figsize=(3 * ncols, 3 * nrows))
+    axs = axs.ravel()
+    
+    for i, idx in enumerate(indices):
         img, label = test_dataset[idx]
+    
         with torch.no_grad():
             logits = model(img.unsqueeze(0).to(device))
-            if multi_label:
-                preds = (logits > 0).float().cpu().squeeze(0)
-            else:
-                preds = logits.argmax(dim=1).cpu()
-
-        # Show image
-        plt.imshow(img.squeeze(0), cmap='gray')
-        if multi_label:
-            true_digits = [i for i, val in enumerate(label) if val == 1]
-            pred_digits = [i for i, val in enumerate(preds) if val == 1]
-            plt.title(f"True: {true_digits}, Pred: {pred_digits}")
+    
+        # Check if multi-label or single-label
+        if isinstance(label, int):
+            # SINGLE-LABEL scenario
+            # label is just an integer
+            true_label = label
+            # find predicted digit
+            pred_digit = logits.argmax(dim=1).cpu().item()
+            title_str = f"True: {true_label}\nPred: {pred_digit}"
         else:
-            plt.title(f"True: {label}, Pred: {preds.item()}")
-        plt.axis('off')
-        plt.show()
+            # MULTI-LABEL scenario
+            # label is a tensor of shape [10] with 0/1
+            preds = (logits > 0).float().cpu().squeeze(0)
+            true_digits = [j for j, val in enumerate(label) if val == 1]
+            predicted_digits = [j for j, val in enumerate(preds) if val == 1]
+            title_str = f"True: {true_digits}\nPred: {predicted_digits}"
+    
+        axs[i].imshow(img.squeeze(0), cmap='gray')
+        axs[i].axis('off')
+        axs[i].set_title(title_str)
+    
+    # Hide any unused subplots
+    for ax in axs[num_test_samples:]:
+        ax.axis('off')
+    
+    plt.tight_layout()
+    plt.show()
+    
 
 if __name__ == "__main__":
     main()

@@ -104,5 +104,5 @@ During training, the script logs training and validation losses and accuracies a
 
 
 The resulting sample image for overlapped MNIST digits with true digits and predicted digits are the following:
-![alt text](figures/overlapped_image.png 'sample overlapped mnist with pred and true')
+![alt text](figures/overlapped_image.PNG 'sample overlapped mnist with pred and true')
 

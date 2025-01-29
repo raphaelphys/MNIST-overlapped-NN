@@ -103,6 +103,9 @@ During training, the script logs training and validation losses and accuracies a
 ![alt text](figures/loss_curve.PNG 'Loss curve')
 
 
+When you run the evaluate.py script, it will randomly display images from the test set and print the true vs. predicted labels.
+
 The resulting sample image for overlapped MNIST digits with true digits and predicted digits are the following:
+
 ![alt text](figures/overlapped_image.PNG 'sample overlapped mnist with pred and true')
 

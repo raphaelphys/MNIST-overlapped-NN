@@ -76,6 +76,14 @@ python train.py --overlapped --epochs 10 --save_model overlapped_mnist.pth
 ## Evaluate
 Use evaluate.py to load a saved model and compute accuracy on the test set. It will also display a few random samples with predicted vs. ground truth labels.
 
+
+Overlapped MNIST example:
+
+```bash
+python evaluate.py --model_path overlapped_mnist.pth --overlapped
+
+```
+
 Standard MNIST example:
 
 ```bash
@@ -83,11 +91,7 @@ Standard MNIST example:
 python evaluate.py --model_path mnist_standard.pth
 ```
 
-Overlapped MNIST example:
 
-```bash
-python evaluate.py --model_path overlapped_mnist.pth --overlapped
-```
 Key arguments:
 
 --model_path: The .pth file where your model weights were saved.

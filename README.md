@@ -39,7 +39,7 @@ The main difference between **standard** and **overlapped** MNIST is the dataset
 
 ## What is Binary Cross-Entropy (BCE) with Logits Loss and why?
 
-When dealing with **multi-label** problems [here](https://openaccess.thecvf.com/content/CVPR2023/papers/Kobayashi_Two-Way_Multi-Label_Loss_CVPR_2023_paper.pdf)(e.g., an image might contain multiple classes simultaneously), we treat each class as an independent binary decision. Instead of the softmax function, we use the **sigmoid** function on each logit:
+When dealing with **multi-label** problems [here](https://openaccess.thecvf.com/content/CVPR2023/papers/Kobayashi_Two-Way_Multi-Label_Loss_CVPR_2023_paper.pdf){:target="_blank"}(e.g., an image might contain multiple classes simultaneously), we treat each class as an independent binary decision. Instead of the softmax function, we use the **sigmoid** function on each logit:
 
 $$
 \sigma(z_i) = \frac{1}{1 + \exp(-z_i)} \quad \text{for each class } i.

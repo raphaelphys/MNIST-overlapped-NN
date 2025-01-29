@@ -73,23 +73,27 @@ Example: train on overlapped MNIST for 10 epochs and save:
 
 python train.py --overlapped --epochs 10 --save_model overlapped_mnist.pth
 ```
-Evaluate
+## Evaluate
 Use evaluate.py to load a saved model and compute accuracy on the test set. It will also display a few random samples with predicted vs. ground truth labels.
 
 Standard MNIST example:
 
-bash
-Copy
-Edit
+```bash
+
 python evaluate.py --model_path mnist_standard.pth
+```
+
 Overlapped MNIST example:
 
-
+```bash
 python evaluate.py --model_path overlapped_mnist.pth --overlapped
+```
 Key arguments:
 
 --model_path: The .pth file where your model weights were saved.
+
 --overlapped: Specifies that the model was trained on overlapped multi-label MNIST.
-Results and Figures
+
+## Results and Figures
 Training Curves
 During training, the script logs training and validation losses and accuracies at each epoch. Below is an example accuracy curve (left) and loss curve (right) for a model trained on overlapped MNIST:

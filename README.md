@@ -147,4 +147,4 @@ The resulting sample image for overlapped MNIST digits with true digits and pred
 
 
 ## Reference:
-1) Kobayashi, T. (2023). Two-way multi-label loss. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (pp. 7476-7485).
+1) [Kobayashi, T. (2023). Two-way multi-label loss. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (pp. 7476-7485).](https://openaccess.thecvf.com/content/CVPR2023/papers/Kobayashi_Two-Way_Multi-Label_Loss_CVPR_2023_paper.pdf)

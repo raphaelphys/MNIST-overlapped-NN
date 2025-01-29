@@ -44,17 +44,17 @@ The main difference between **standard** and **overlapped** MNIST is the dataset
 ├── evaluate.py               # Script for model evaluation and visualization
 ├── README.md                 # This file
 └── data/                     # MNIST data downloaded automatically
-
+```
 --
 ##  Usage
-Train
+**Train**
 
 By default, train.py trains on standard single-label MNIST with CrossEntropyLoss:
 
-bash
-Copy
-Edit
+```bash
+
 python train.py --epochs 5 --save_model mnist_standard.pth
+```
 Key arguments:
 
 --overlapped: Use overlapped (multi-label) MNIST instead of single-label MNIST.

@@ -54,11 +54,8 @@ $$
 We typically **average** over all \(K\) classes:
 
 $$
-\text{BCE\_with\_Logits}\bigl(\mathbf{z}, \mathbf{y}\bigr)=
-\frac{1}{K} \sum_{i=1}^{K}
-\Bigl[
--\,y_i \log\bigl(\sigma(z_i)\bigr)
-- \bigl(1 - y_i\bigr)\log\bigl(1 - \sigma(z_i)\bigr)
+\text{BCE\_with\_Logits}\bigl(\mathbf{z}, \mathbf{y}\bigr)= \frac{1}{K} \sum_{i=1}^{K}
+\Bigl[ -\,y_i \log\bigl(\sigma(z_i)\bigr) - \bigl(1 - y_i\bigr)\log\bigl(1 - \sigma(z_i)\bigr)
 \Bigr].
 $$
 

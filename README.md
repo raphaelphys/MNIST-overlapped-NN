@@ -12,13 +12,14 @@ In **Overlapped MNIST**, each sample is formed by picking **two random MNIST dig
 ---
 
 ## Table of Contents
-1. [Introduction](#introduction)  
-2. [Project Structure](#project-structure)  
-3. [Requirements](#requirements)  
-4. [Usage](#usage)  
+1. [Introduction](#introduction) 
+2. [Reason for BCE](#BCEWithLogitsLoss) 
+3. [Project Structure](#project-structure)  
+4. [Requirements](#requirements)  
+5. [Usage](#usage)  
    - [Train](#train)  
    - [Evaluate](#evaluate)  
-5. [Results and Figures](#results-and-figures)
+6. [Results and Figures](#results-and-figures)
 
 ---
 
@@ -29,9 +30,44 @@ This repository contains two core scripts:
 - `train.py`: Train a **simple MLP** (three hidden layers) to classify either standard MNIST digits (with **cross-entropy loss**) or overlapped MNIST (with **BCEWithLogitsLoss** and multi-hot labels).
 - `evaluate.py`: Load a saved model and run evaluation or visualize random predictions from the test set.
 
+
+
 The main difference between **standard** and **overlapped** MNIST is the dataset:
 - **Standard MNIST**: single-label classification (digits 0–9).
 - **Overlapped MNIST**: each image is the average of two random digits, yielding a **multi-label** problem where each image can contain **two** of the digits (0–9).
+
+
+## What is Binary Cross-Entropy (BCE) with Logits Loss and why?
+
+When dealing with **multi-label** problems (e.g., an image might contain multiple classes simultaneously), we treat each class as an independent binary decision. Instead of the softmax function, we use the **sigmoid** function on each logit:
+
+\[
+\sigma(z_i) = \frac{1}{1 + \exp(-z_i)} \quad \text{for each class } i.
+\]
+
+Given a **multi-hot** ground-truth vector \(\mathbf{y} \in \{0,1\}^K\) and corresponding logits \(\mathbf{z} \in \mathbb{R}^K\), the **Binary Cross-Entropy (BCE)** loss for each class \(i\) is:
+
+\[
+\text{BCE}\bigl(z_i, y_i\bigr)
+=
+-y_i \log \bigl(\sigma(z_i)\bigr)
+- (1 - y_i)\log \bigl(1 - \sigma(z_i)\bigr).
+\]
+
+We typically **average** over all \(K\) classes:
+
+\[
+\text{BCE\_with\_Logits}\bigl(\mathbf{z}, \mathbf{y}\bigr)
+=
+\frac{1}{K} \sum_{i=1}^{K}
+\Bigl[
+-\,y_i \log\bigl(\sigma(z_i)\bigr)
+- \bigl(1 - y_i\bigr)\log\bigl(1 - \sigma(z_i)\bigr)
+\Bigr].
+\]
+
+In most modern frameworks (e.g., PyTorch), we can use a numerically stable variant called **BCEWithLogitsLoss**, which takes **raw logits** and applies the sigmoid internally to avoid numerical underflow or overflow. This makes **BCE** well-suited for **multi-label** classification, where each class is independently “on” or “off” rather than exactly one class per sample.
+
 
 ---
 

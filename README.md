@@ -102,7 +102,7 @@ Key arguments:
 **Training Curves**
 
 
-During training, the script logs training and validation losses and accuracies at each epoch. Below is an example loss curve (right), mse curve (center) and accuracy curve (right) for a model trained on overlapped MNIST with epochs = 30:
+During training, the script logs training and validation losses and accuracies at each epoch. Below is an example loss curve (left), mse curve (center) and accuracy curve (right) for a model trained on overlapped MNIST with epochs = 30:
 
 ![alt text](figures/loss_curve.PNG 'Loss curve')
 
